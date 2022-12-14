@@ -2,7 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM'
+import OSM from 'ol/source/OSM';
+import {
+  defaults, 
+  ScaleLine, 
+  ZoomSlider,
+  Rotate,
+  FullScreen,
+  ZoomToExtent,
+  MousePosition,
+  OverviewMap} from 'ol/control';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,7 +31,16 @@ export class AppComponent implements OnInit {
           source: new OSM()
         })
       ],
-      target: "map"
+      target: "map",
+      controls: defaults().extend([
+        new ScaleLine(),
+        new ZoomSlider(),
+        new Rotate(),
+        new FullScreen(),
+        new ZoomToExtent(),
+        new MousePosition(),
+        new OverviewMap()
+      ])
     })
 
   }
